@@ -9,6 +9,7 @@ import { formatCurrency } from "../../../../helper/helper";
 import { addToCart } from "../../../Cart/CartSlice";
 import { getProduct } from "../../productsSlice";
 import "./style.scss";
+import { Helmet } from "react-helmet";
 
 const override = css`
 	display: block;
@@ -74,109 +75,120 @@ const ProductDetail = () => {
 	};
 
 	return (
-		<div className="product-detail">
-			<div className="product-detail__container">
-				<div className="product-detail__wrap">
-					{loading ? (
-						<PulseLoader loading={loading} css={override} size={8} />
-					) : (
-						<>
-							<div className="product-detail__thumb">
-								<img src={image} alt="" />
-							</div>
-							<div className="product-detail__content">
-								<div className="product-detail__content-top">
-									<h3>{title}</h3>
-									<div className="product-detail__content-rating">
-										<span className="product-detail__content-star">
-											<ion-icon name="star-outline"></ion-icon>
-										</span>
-										<span className="product-detail__content-star">
-											<ion-icon name="star-outline"></ion-icon>
-										</span>
-										<span className="product-detail__content-star">
-											<ion-icon name="star-outline"></ion-icon>
-										</span>
-										<span className="product-detail__content-star">
-											<ion-icon name="star-outline"></ion-icon>
-										</span>
-										<span className="product-detail__content-star">
-											<ion-icon name="star-outline"></ion-icon>
-										</span>
+		<>
+			<Helmet>
+				<meta charSet="utf-8" />
+				<title>Product detail</title>
+				<link
+					rel="icon"
+					href="https://image.flaticon.com/icons/png/512/777/777205.png"
+				/>
+			</Helmet>
 
-										{/* <MdStar className="product-detail__content-star" /> */}
+			<div className="product-detail">
+				<div className="product-detail__container">
+					<div className="product-detail__wrap">
+						{loading ? (
+							<PulseLoader loading={loading} css={override} size={8} />
+						) : (
+							<>
+								<div className="product-detail__thumb">
+									<img src={image} alt="" />
+								</div>
+								<div className="product-detail__content">
+									<div className="product-detail__content-top">
+										<h3>{title}</h3>
+										<div className="product-detail__content-rating">
+											<span className="product-detail__content-star">
+												<ion-icon name="star-outline"></ion-icon>
+											</span>
+											<span className="product-detail__content-star">
+												<ion-icon name="star-outline"></ion-icon>
+											</span>
+											<span className="product-detail__content-star">
+												<ion-icon name="star-outline"></ion-icon>
+											</span>
+											<span className="product-detail__content-star">
+												<ion-icon name="star-outline"></ion-icon>
+											</span>
+											<span className="product-detail__content-star">
+												<ion-icon name="star-outline"></ion-icon>
+											</span>
+
+											{/* <MdStar className="product-detail__content-star" /> */}
+										</div>
+										<p>{formatCurrency(price)}</p>
 									</div>
-									<p>{formatCurrency(price)}</p>
-								</div>
-								<div className="product-detail__content-desc">
-									<p>{description}</p>
-								</div>
-								<div className="product-detail__content-actions">
-									<div className="product-detail__content-quantity">
-										<p>Quantity</p>
+									<div className="product-detail__content-desc">
+										<p>{description}</p>
+									</div>
+									<div className="product-detail__content-actions">
+										<div className="product-detail__content-quantity">
+											<p>Quantity</p>
+											<div>
+												<button
+													onClick={() => {
+														if (quantity <= 1) {
+															return;
+														} else {
+															setQuantity(quantity - 1);
+														}
+													}}
+												>
+													-
+												</button>
+												<span>{quantity}</span>
+												<button
+													onClick={() => {
+														setQuantity(quantity + 1);
+													}}
+												>
+													+
+												</button>
+											</div>
+										</div>
+										<button
+											className="product-detail__content-add"
+											onClick={addProduct}
+										>
+											Add to cart
+										</button>
+									</div>
+									<div className="product-detail__content-category">
+										<p>Category:</p>
 										<div>
-											<button
-												onClick={() => {
-													if (quantity <= 1) {
-														return;
-													} else {
-														setQuantity(quantity - 1);
-													}
-												}}
-											>
-												-
-											</button>
-											<span>{quantity}</span>
-											<button
-												onClick={() => {
-													setQuantity(quantity + 1);
-												}}
-											>
-												+
-											</button>
+											<span>Accessories,</span>
+											<span>Gaming,</span>
+											<span>PC Computers,</span>
+											<span>Ultrabooks</span>
 										</div>
 									</div>
-									<button
-										className="product-detail__content-add"
-										onClick={addProduct}
-									>
-										Add to cart
-									</button>
-								</div>
-								<div className="product-detail__content-category">
-									<p>Category:</p>
-									<div>
-										<span>Accessories,</span>
-										<span>Gaming,</span>
-										<span>PC Computers,</span>
-										<span>Ultrabooks</span>
+
+									<div className="product-detail__content-share">
+										<p>Share:</p>
+										<div>
+											<span>
+												<ion-icon name="logo-facebook"></ion-icon>
+											</span>
+
+											<span>
+												<ion-icon name="logo-youtube"></ion-icon>
+											</span>
+											<span>
+												<ion-icon name="logo-youtube"></ion-icon>
+											</span>
+											<span>
+												<ion-icon name="logo-twitter"></ion-icon>
+											</span>
+										</div>
 									</div>
 								</div>
-
-								<div className="product-detail__content-share">
-									<p>Share:</p>
-									<div>
-										<span>
-											<ion-icon name="logo-facebook"></ion-icon>
-										</span>
-
-										<span>
-											<ion-icon name="logo-youtube"></ion-icon>
-										</span>
-										<span>
-											<ion-icon name="logo-youtube"></ion-icon>
-										</span>
-										<span>
-											<ion-icon name="logo-twitter"></ion-icon>
-										</span>
-									</div>
-								</div>
-							</div>
-						</>
-					)}
+							</>
+						)}
+					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

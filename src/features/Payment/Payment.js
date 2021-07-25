@@ -7,6 +7,7 @@ import { db } from "../../firebase/firebase";
 import { formatCurrency, totalPriceInCart } from "../../helper/helper";
 import { emptyCart } from "../Cart/CartSlice";
 import "./style.scss";
+import { Helmet } from "react-helmet";
 
 const Payment = () => {
 	const dispatch = useDispatch();
@@ -54,81 +55,91 @@ const Payment = () => {
 	};
 
 	return (
-		<div className="payment">
-			<div className="payment__container">
-				{cart.length <= 0 ? (
-					<h2 className="payment__empty">Nothing to pay</h2>
-				) : (
-					<>
-						<h3 className="payment__title">
-							{`Checkout (${cart.length} ${
-								cart.length > 1 ? "items" : "item"
-							})`}
-						</h3>
+		<>
+			<Helmet>
+				<meta charSet="utf-8" />
+				<title>Payment</title>
+				<link
+					rel="icon"
+					href="https://image.flaticon.com/icons/png/512/777/777205.png"
+				/>
+			</Helmet>
+			<div className="payment">
+				<div className="payment__container">
+					{cart.length <= 0 ? (
+						<h2 className="payment__empty">Nothing to pay</h2>
+					) : (
+						<>
+							<h3 className="payment__title">
+								{`Checkout (${cart.length} ${
+									cart.length > 1 ? "items" : "item"
+								})`}
+							</h3>
 
-						<div className="payment__info">
-							<div className="payment__address">
-								<div className="payment__address-title">
-									<h5>Delivery address</h5>
-								</div>
-								<div className="payment__address-desc">
-									{user && <p>{user.email}</p>}
-									<p>123 ReactJS</p>
-									<p>California</p>
-								</div>
-							</div>
-
-							<div className="payment__items">
-								<div className="payment__items-title">
-									<h5>Review items</h5>
+							<div className="payment__info">
+								<div className="payment__address">
+									<div className="payment__address-title">
+										<h5>Delivery address</h5>
+									</div>
+									<div className="payment__address-desc">
+										{user && <p>{user.email}</p>}
+										<p>123 ReactJS</p>
+										<p>California</p>
+									</div>
 								</div>
 
-								<div className="payment__items-container">
-									{cart &&
-										cart?.map((product) => {
-											return (
-												<div className="payment__items-item" key={product.id}>
-													<img src={product.image} alt={product.title} />
-													<div>
-														<h5>{product.title}</h5>
-														<p>
-															{formatCurrency(product.price)} x{" "}
-															{product.quantity}
-														</p>
+								<div className="payment__items">
+									<div className="payment__items-title">
+										<h5>Review items</h5>
+									</div>
+
+									<div className="payment__items-container">
+										{cart &&
+											cart?.map((product) => {
+												return (
+													<div className="payment__items-item" key={product.id}>
+														<img src={product.image} alt={product.title} />
+														<div>
+															<h5>{product.title}</h5>
+															<p>
+																{formatCurrency(product.price)} x{" "}
+																{product.quantity}
+															</p>
+														</div>
 													</div>
-												</div>
-											);
-										})}
-								</div>
-							</div>
-
-							<div className="payment__method">
-								<div className="payment__method-title">
-									<h5>Payment</h5>
-								</div>
-								<div className="payment__method-form">
-									<form onSubmit={handleSubmit}>
-										<div className="payment__method-buy">
-											<h5>Total: {formatCurrency(totalPriceInCart(cart))}</h5>
-											<button type="submit">
-												<span>Buy Now</span>
-											</button>
-										</div>
-									</form>
+												);
+											})}
+									</div>
 								</div>
 
-								{showConfetti && (
-									<Confetti
-										width={window.innerWidth}
-										height={window.innerHeight}
-									/>
-								)}
+								<div className="payment__method">
+									<div className="payment__method-title">
+										<h5>Payment</h5>
+									</div>
+									<div className="payment__method-form">
+										<form onSubmit={handleSubmit}>
+											<div className="payment__method-buy">
+												<h5>Total: {formatCurrency(totalPriceInCart(cart))}</h5>
+												<button type="submit">
+													<span>Buy Now</span>
+												</button>
+											</div>
+										</form>
+									</div>
+
+									{showConfetti && (
+										<Confetti
+											width={window.innerWidth}
+											height={window.innerHeight}
+										/>
+									)}
+								</div>
 							</div>
-						</div>
-					</>
-				)}
+						</>
+					)}
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

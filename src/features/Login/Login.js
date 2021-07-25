@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import * as yup from "yup";
 import { auth } from "../../firebase/firebase";
 import "./style.scss";
+import { Helmet } from "react-helmet";
 
 const schema = yup.object().shape({
 	email: yup
@@ -41,80 +42,90 @@ const Login = () => {
 	};
 
 	return (
-		<div className="login-form">
-			<div className="login-form__container">
-				{/* {email && uid ? (
+		<>
+			<Helmet>
+				<meta charSet="utf-8" />
+				<title>Login</title>
+				<link
+					rel="icon"
+					href="https://image.flaticon.com/icons/png/512/777/777205.png"
+				/>
+			</Helmet>
+			<div className="login-form">
+				<div className="login-form__container">
+					{/* {email && uid ? (
 					<p className="login-form__already-login">You are already logged in</p>
 				) : ( */}
-				<form
-					className="login-form__content"
-					onSubmit={handleSubmit(handleLogin)}
-				>
-					<h3>Login From Here</h3>
-					<div className="login-form__input-group">
-						<label htmlFor="email">Email Address</label>
-						<input
-							{...register("email")}
-							name="email"
-							type="text"
-							id="email"
-							placeholder="Enter address"
-							className={errors.email && "login-form__error-field"}
-						/>
-						{errors.email && (
-							<span className="login-form__error-message">
-								{errors.email.message}
-							</span>
-						)}
-					</div>
-					<div className="login-form__input-group">
-						<label htmlFor="password">Password </label>
-						<input
-							{...register("password")}
-							name="password"
-							type="password"
-							id="password"
-							placeholder="Enter Password"
-							className={errors.password && "login-form__error-field"}
-						/>
-						{errors.password && (
-							<span className="login-form__error-message">
-								{errors.password.message}
-							</span>
-						)}
-					</div>
-					<div className="login-form__input-group--custom">
-						<div>
-							<input type="checkbox" id="remember" />
-							<label htmlFor="remember">Remember me!</label>
-						</div>
-						<Link to="/forgot_password">Forgot your password?</Link>
-					</div>
-					<div className="login-form__actions">
-						<button className="login-form__action">Login Now</button>
-
-						{/* Error when submitting */}
-						{error && (
-							<p className="login-form__error-submit">
-								<span>
-									<ion-icon name="warning-outline"></ion-icon>
+					<form
+						className="login-form__content"
+						onSubmit={handleSubmit(handleLogin)}
+					>
+						<h3>Login From Here</h3>
+						<div className="login-form__input-group">
+							<label htmlFor="email">Email Address</label>
+							<input
+								{...register("email")}
+								name="email"
+								type="text"
+								id="email"
+								placeholder="Enter address"
+								className={errors.email && "login-form__error-field"}
+							/>
+							{errors.email && (
+								<span className="login-form__error-message">
+									{errors.email.message}
 								</span>
-								<span>{error}</span>
-							</p>
-						)}
+							)}
+						</div>
+						<div className="login-form__input-group">
+							<label htmlFor="password">Password </label>
+							<input
+								{...register("password")}
+								name="password"
+								type="password"
+								id="password"
+								placeholder="Enter Password"
+								className={errors.password && "login-form__error-field"}
+							/>
+							{errors.password && (
+								<span className="login-form__error-message">
+									{errors.password.message}
+								</span>
+							)}
+						</div>
+						<div className="login-form__input-group--custom">
+							<div>
+								<input type="checkbox" id="remember" />
+								<label htmlFor="remember">Remember me!</label>
+							</div>
+							<Link to="/forgot_password">Forgot your password?</Link>
+						</div>
+						<div className="login-form__actions">
+							<button className="login-form__action">Login Now</button>
 
-						<p className="login-form__hr">or</p>
-						<Link
-							className="login-form__action login-form__action--login"
-							to="/register"
-						>
-							Register now
-						</Link>
-					</div>
-				</form>
-				{/* )} */}
+							{/* Error when submitting */}
+							{error && (
+								<p className="login-form__error-submit">
+									<span>
+										<ion-icon name="warning-outline"></ion-icon>
+									</span>
+									<span>{error}</span>
+								</p>
+							)}
+
+							<p className="login-form__hr">or</p>
+							<Link
+								className="login-form__action login-form__action--login"
+								to="/register"
+							>
+								Register now
+							</Link>
+						</div>
+					</form>
+					{/* )} */}
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

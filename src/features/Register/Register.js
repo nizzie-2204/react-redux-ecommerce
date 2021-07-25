@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { auth } from "../../firebase/firebase";
+import { Helmet } from "react-helmet";
 
 const schema = yup.object().shape({
 	email: yup
@@ -52,93 +53,105 @@ const Register = () => {
 	};
 
 	return (
-		<div className="register-form">
-			<div className="register-form__container">
-				<form
-					className="register-form__content"
-					onSubmit={handleSubmit(handleRegister)}
-				>
-					<h3>Signup From Here</h3>
-					<div className="register-form__input-group">
-						<label htmlFor="email">Email Address</label>
-						<input
-							{...register("email")}
-							type="text"
-							id="email"
-							placeholder="Enter address"
-							className={errors.email && "register-form__error-field"}
-						/>
+		<>
+			<Helmet>
+				<meta charSet="utf-8" />
+				<title>Register</title>
+				<link
+					rel="icon"
+					href="https://image.flaticon.com/icons/png/512/777/777205.png"
+				/>
+			</Helmet>
+			<div className="register-form">
+				<div className="register-form__container">
+					<form
+						className="register-form__content"
+						onSubmit={handleSubmit(handleRegister)}
+					>
+						<h3>Signup From Here</h3>
+						<div className="register-form__input-group">
+							<label htmlFor="email">Email Address</label>
+							<input
+								{...register("email")}
+								type="text"
+								id="email"
+								placeholder="Enter address"
+								className={errors.email && "register-form__error-field"}
+							/>
 
-						{/* Error when submitting */}
-						{errors.email && (
-							<span className="register-form__error-message">
-								{errors.email.message}
-							</span>
-						)}
-					</div>
-
-					<div className="register-form__input-group">
-						<label htmlFor="password">Password </label>
-						<input
-							{...register("password")}
-							type="password"
-							id="password"
-							placeholder="Enter Password"
-							className={errors.password && "register-form__error-field"}
-						/>
-
-						{/* Error when submitting */}
-						{errors.password && (
-							<span className="register-form__error-message">
-								{errors.password.message}
-							</span>
-						)}
-					</div>
-
-					<div className="register-form__input-group">
-						<label htmlFor="confirmPassword">Confirm Password </label>
-						<input
-							{...register("confirmPassword")}
-							type="password"
-							id="confirmPassword"
-							placeholder="Confirm Password"
-							className={errors.confirmPassword && "register-form__error-field"}
-						/>
-
-						{/* Error when submitting */}
-						{errors.confirmPassword && (
-							<span className="register-form__error-message">
-								{errors.confirmPassword.message}
-							</span>
-						)}
-					</div>
-
-					<div className="register-form__actions">
-						<button className="register-form__action" type="submit">
-							Register Now
-						</button>
-
-						{/* Error when submitting */}
-						{error && (
-							<p className="register-form__error-submit">
-								<span>
-									<ion-icon name="warning-outline"></ion-icon>
+							{/* Error when submitting */}
+							{errors.email && (
+								<span className="register-form__error-message">
+									{errors.email.message}
 								</span>
-								<span>{error}</span>
-							</p>
-						)}
+							)}
+						</div>
 
-						<p className="register-form__hr">or</p>
-						<Link
-							className="register-form__action register-form__action--login"
-							to="/login"
-						>
-							Login now
-						</Link>
-					</div>
-				</form>
+						<div className="register-form__input-group">
+							<label htmlFor="password">Password </label>
+							<input
+								{...register("password")}
+								type="password"
+								id="password"
+								placeholder="Enter Password"
+								className={errors.password && "register-form__error-field"}
+							/>
+
+							{/* Error when submitting */}
+							{errors.password && (
+								<span className="register-form__error-message">
+									{errors.password.message}
+								</span>
+							)}
+						</div>
+
+						<div className="register-form__input-group">
+							<label htmlFor="confirmPassword">Confirm Password </label>
+							<input
+								{...register("confirmPassword")}
+								type="password"
+								id="confirmPassword"
+								placeholder="Confirm Password"
+								className={
+									errors.confirmPassword && "register-form__error-field"
+								}
+							/>
+
+							{/* Error when submitting */}
+							{errors.confirmPassword && (
+								<span className="register-form__error-message">
+									{errors.confirmPassword.message}
+								</span>
+							)}
+						</div>
+
+						<div className="register-form__actions">
+							<button className="register-form__action" type="submit">
+								Register Now
+							</button>
+
+							{/* Error when submitting */}
+							{error && (
+								<p className="register-form__error-submit">
+									<span>
+										<ion-icon name="warning-outline"></ion-icon>
+									</span>
+									<span>{error}</span>
+								</p>
+							)}
+
+							<p className="register-form__hr">or</p>
+							<Link
+								className="register-form__action register-form__action--login"
+								to="/login"
+							>
+								Login now
+							</Link>
+						</div>
+					</form>
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

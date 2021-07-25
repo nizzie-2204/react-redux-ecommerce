@@ -54,7 +54,7 @@ const Header = () => {
 									<Link to="/shop">Shop</Link>
 								</li>
 								<li className="header__menu-item">
-									<Link to="/profile">My account</Link>
+									<Link to="/profile">My profile</Link>
 								</li>
 								<li className="header__menu-item">
 									<Link to="/register">Register</Link>

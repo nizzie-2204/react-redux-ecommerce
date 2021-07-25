@@ -9,6 +9,7 @@ import { options } from "../../../../helper/helper";
 import { getProducts, getProductsByCategory } from "../../productsSlice";
 import Product from "../Product/Product";
 import "./style.scss";
+import { Helmet } from "react-helmet";
 
 const override = css`
 	display: block;
@@ -58,30 +59,41 @@ const Products = () => {
 	}, [selectedOption?.value]);
 
 	return (
-		<div className="products">
-			<div className="products__container">
-				{loading ? (
-					<PulseLoader loading={loading} css={override} size={8} />
-				) : (
-					<>
-						<div className="products__select">
-							<Select
-								value={selectedOption}
-								options={options}
-								onChange={handleChangeOption}
-								defaultValue={null}
-								placeholder="Category"
-							/>
-						</div>
-						<div className="products__content">
-							{products.map((product) => {
-								return <Product product={product} key={product.id} />;
-							})}
-						</div>
-					</>
-				)}
+		<>
+			<Helmet>
+				<meta charSet="utf-8" />
+				<title>Shop</title>
+				<link
+					rel="icon"
+					href="https://image.flaticon.com/icons/png/512/777/777205.png"
+				/>
+			</Helmet>
+
+			<div className="products">
+				<div className="products__container">
+					{loading ? (
+						<PulseLoader loading={loading} css={override} size={8} />
+					) : (
+						<>
+							<div className="products__select">
+								<Select
+									value={selectedOption}
+									options={options}
+									onChange={handleChangeOption}
+									defaultValue={null}
+									placeholder="Category"
+								/>
+							</div>
+							<div className="products__content">
+								{products.map((product) => {
+									return <Product product={product} key={product.id} />;
+								})}
+							</div>
+						</>
+					)}
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

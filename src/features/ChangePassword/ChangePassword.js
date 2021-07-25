@@ -6,6 +6,7 @@ import * as yup from "yup";
 import SidebarUser from "../../components/SidebarUser/SidebarUser";
 import { auth } from "../../firebase/firebase";
 import "./style.scss";
+import { Helmet } from "react-helmet";
 
 const schema = yup.object().shape({
 	password: yup
@@ -68,6 +69,15 @@ const ChangePassword = () => {
 
 	return (
 		<>
+			<Helmet>
+				<meta charSet="utf-8" />
+				<title>Change password</title>
+				<link
+					rel="icon"
+					href="https://image.flaticon.com/icons/png/512/777/777205.png"
+				/>
+			</Helmet>
+
 			<div className="change-password">
 				<div className="change-password__container">
 					<div className="change-password__wrap">

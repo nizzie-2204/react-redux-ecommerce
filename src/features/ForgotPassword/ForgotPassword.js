@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { auth } from "../../firebase/firebase";
+import { Helmet } from "react-helmet";
 
 const schema = yup.object().shape({
 	email: yup
@@ -37,60 +38,71 @@ const ForgotPassword = () => {
 	};
 
 	return (
-		<div className="forgot-pw">
-			<div className="forgot-pw__container">
-				<form
-					className="forgot-pw__form"
-					onSubmit={handleSubmit(handleForgotPw)}
-				>
-					<h3 className="forgot-pw__title">Forgot password?</h3>
-					<p>
-						Enter your registered email below to receive password reset
-						instruction
-					</p>
-					<div className="forgot-pw__input-group">
-						<label htmlFor="email">Email Address</label>
-						<input
-							{...register("email")}
-							name="email"
-							type="text"
-							id="email"
-							placeholder="Enter address"
-							className={errors.email && "forgot-pw__error-field"}
-						/>
-						{errors.email && (
-							<span className="forgot-pw__error-message">
-								{errors.email.message}
-							</span>
+		<>
+			<Helmet>
+				<meta charSet="utf-8" />
+				<title>Forgot password</title>
+				<link
+					rel="icon"
+					href="https://image.flaticon.com/icons/png/512/777/777205.png"
+				/>
+			</Helmet>
+
+			<div className="forgot-pw">
+				<div className="forgot-pw__container">
+					<form
+						className="forgot-pw__form"
+						onSubmit={handleSubmit(handleForgotPw)}
+					>
+						<h3 className="forgot-pw__title">Forgot password?</h3>
+						<p>
+							Enter your registered email below to receive password reset
+							instruction
+						</p>
+						<div className="forgot-pw__input-group">
+							<label htmlFor="email">Email Address</label>
+							<input
+								{...register("email")}
+								name="email"
+								type="text"
+								id="email"
+								placeholder="Enter address"
+								className={errors.email && "forgot-pw__error-field"}
+							/>
+							{errors.email && (
+								<span className="forgot-pw__error-message">
+									{errors.email.message}
+								</span>
+							)}
+						</div>
+
+						<button type="submit" className="forgot-pw__action">
+							Reset password
+						</button>
+
+						{/* Submit successfully */}
+						{success && (
+							<p className="forgot-pw__success">
+								<span>
+									<ion-icon name="checkmark-circle-outline"></ion-icon>
+								</span>
+								<span>{success}</span>
+							</p>
 						)}
-					</div>
 
-					<button type="submit" className="forgot-pw__action">
-						Reset password
-					</button>
-
-					{/* Submit successfully */}
-					{success && (
-						<p className="forgot-pw__success">
-							<span>
-								<ion-icon name="checkmark-circle-outline"></ion-icon>
-							</span>
-							<span>{success}</span>
-						</p>
-					)}
-
-					{/* Error when submitting */}
-					{error && (
-						<p className="forgot-pw__error-submit">
-							<span>
-								<ion-icon name="warning-outline"></ion-icon>
-							</span>
-							<span>{error}</span>
-						</p>
-					)}
-				</form>
+						{/* Error when submitting */}
+						{error && (
+							<p className="forgot-pw__error-submit">
+								<span>
+									<ion-icon name="warning-outline"></ion-icon>
+								</span>
+								<span>{error}</span>
+							</p>
+						)}
+					</form>
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 
