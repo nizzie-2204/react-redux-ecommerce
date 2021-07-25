@@ -1,25 +1,14 @@
+import { css } from "@emotion/react";
 import { unwrapResult } from "@reduxjs/toolkit";
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Select from "react-select";
+import PulseLoader from "react-spinners/PulseLoader";
 import { options } from "../../../../helper/helper";
-
+import { getProducts, getProductsByCategory } from "../../productsSlice";
 import Product from "../Product/Product";
 import "./style.scss";
-import PulseLoader from "react-spinners/PulseLoader";
-
-import { css } from "@emotion/react";
-import { useState } from "react";
-import {
-	useHistory,
-	useLocation,
-} from "react-router-dom/cjs/react-router-dom.min";
-import {
-	filterProductsByPrice,
-	getProducts,
-	getProductsByCategory,
-} from "../../productsSlice";
 
 const override = css`
 	display: block;
@@ -31,7 +20,6 @@ const override = css`
 const Products = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
-	const location = useLocation();
 
 	const products = useSelector((state) => state.products.products);
 

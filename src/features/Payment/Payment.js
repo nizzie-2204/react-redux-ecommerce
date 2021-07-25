@@ -1,17 +1,15 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import "./style.scss";
-import { formatCurrency, totalPriceInCart } from "../../helper/helper";
 import { nanoid } from "nanoid";
-import { db } from "../../firebase/firebase";
-import { emptyCart } from "../Cart/CartSlice";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import React, { useState } from "react";
 import Confetti from "react-confetti";
+import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
+import { db } from "../../firebase/firebase";
+import { formatCurrency, totalPriceInCart } from "../../helper/helper";
+import { emptyCart } from "../Cart/CartSlice";
+import "./style.scss";
 
 const Payment = () => {
 	const dispatch = useDispatch();
-	const history = useHistory();
 	const [showConfetti, setShowConfetti] = useState(false);
 
 	const user = useSelector((state) => state.user.user);

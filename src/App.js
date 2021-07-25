@@ -1,24 +1,22 @@
+import { Provider } from "react-redux";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import { Route } from "react-router-dom/cjs/react-router-dom.min";
 import "./App.scss";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-import ForgotPassword from "./features/ForgotPassword/ForgotPassword";
-import Login from "./features/Login/Login";
-
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import PublicRoute from "./components/PublicRoute/PublicRoute";
-import Home from "./pages/Home/Home";
 import Cart from "./features/Cart/components/Cart/Cart";
+import ChangePassword from "./features/ChangePassword/ChangePassword";
+import ForgotPassword from "./features/ForgotPassword/ForgotPassword";
+import Login from "./features/Login/Login";
 import Order from "./features/Order/Order";
 import Payment from "./features/Payment/Payment";
+import ProductDetail from "./features/Products/components/ProductDetail/ProductDetail";
+import Products from "./features/Products/components/Products/Products";
 import Profile from "./features/Profile/Profile";
 import Register from "./features/Register/Register";
-import Products from "./features/Products/components/Products/Products";
-import ProductDetail from "./features/Products/components/ProductDetail/ProductDetail";
-import { Provider } from "react-redux";
+import Home from "./pages/Home/Home";
 import store from "./store/store";
-import ChangePassword from "./features/ChangePassword/ChangePassword";
 
 function App() {
 	return (

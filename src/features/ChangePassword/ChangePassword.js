@@ -1,13 +1,11 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { auth } from "../../firebase/firebase";
-import SidebarUser from "../../components/SidebarUser/SidebarUser";
-import "./style.scss";
-import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
-import { currentUser } from "../../firebase/firebase";
+import * as yup from "yup";
+import SidebarUser from "../../components/SidebarUser/SidebarUser";
+import { auth } from "../../firebase/firebase";
+import "./style.scss";
 
 const schema = yup.object().shape({
 	password: yup

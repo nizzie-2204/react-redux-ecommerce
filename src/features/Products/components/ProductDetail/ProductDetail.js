@@ -1,17 +1,14 @@
+import { css } from "@emotion/react";
 import { unwrapResult } from "@reduxjs/toolkit";
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { addToCart } from "../../../Cart/CartSlice";
-import Swal from "sweetalert2";
-import { getProduct } from "../../productsSlice";
 import PulseLoader from "react-spinners/PulseLoader";
-import { css } from "@emotion/react";
-
-import "./style.scss";
+import Swal from "sweetalert2";
 import { formatCurrency } from "../../../../helper/helper";
+import { addToCart } from "../../../Cart/CartSlice";
+import { getProduct } from "../../productsSlice";
+import "./style.scss";
 
 const override = css`
 	display: block;

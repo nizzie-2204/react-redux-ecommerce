@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import "./style.scss";
-import { Link, Redirect, useHistory } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { auth, db } from "../../firebase/firebase";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { Link, useHistory } from "react-router-dom";
+import * as yup from "yup";
+import { auth } from "../../firebase/firebase";
+import "./style.scss";
 
 const schema = yup.object().shape({
 	email: yup

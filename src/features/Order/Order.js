@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import SidebarUser from "../../components/SidebarUser/SidebarUser";
-
 import { db } from "../../firebase/firebase";
 import { formatCurrency } from "../../helper/helper";
-
 import "./style.scss";
 
 const Order = () => {
