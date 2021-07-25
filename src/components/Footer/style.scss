@@ -1,0 +1,84 @@
+@import "../../scss/mixins";
+@import "../../scss/reset";
+@import "../../scss/variables";
+
+.footer {
+	background-color: $black-1;
+	padding: 10rem 0;
+
+	&__container {
+		@include container;
+	}
+
+	&__content {
+		display: flex;
+		color: $white-1;
+	}
+
+	&__right {
+		flex: 0.5;
+		display: flex;
+		flex-direction: column;
+
+		padding-right: 3rem;
+	}
+
+	&__logo {
+		flex: 0.2;
+		font-size: 3rem;
+		font-weight: 600;
+		color: $yellow-1;
+		margin-bottom: 3rem;
+	}
+
+	&__desc {
+		font-size: 1.6rem;
+		font-weight: 500;
+		margin-bottom: 3rem;
+		line-height: 2.4rem;
+	}
+
+	&__contact {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__contact-item {
+		display: flex;
+		align-items: center;
+		font-size: 2rem;
+
+		&:not(:last-of-type) {
+			margin-bottom: 1.5rem;
+		}
+
+		span {
+			margin-left: 1rem;
+			font-size: 1.6rem;
+		}
+	}
+
+	&__left {
+		flex: 0.5;
+		display: flex;
+	}
+
+	&__info,
+	&__service {
+		display: flex;
+		flex-direction: column;
+		flex: 0.5;
+
+		font-size: 1.6rem;
+	}
+
+	&__info-title,
+	&__service-title {
+		margin-bottom: 4.5rem;
+	}
+
+	&__info-item,
+	&__service-item {
+		margin-bottom: 2rem;
+	}
+}

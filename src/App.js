@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { Route } from "react-router-dom/cjs/react-router-dom.min";
+import "./App.scss";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import ForgotPassword from "./features/ForgotPassword/ForgotPassword";
+import Login from "./features/Login/Login";
+
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import PublicRoute from "./components/PublicRoute/PublicRoute";
+import Home from "./pages/Home/Home";
+import Cart from "./features/Cart/components/Cart/Cart";
+import Order from "./features/Order/Order";
+import Payment from "./features/Payment/Payment";
+import Profile from "./features/Profile/Profile";
+import Register from "./features/Register/Register";
+import Products from "./features/Products/components/Products/Products";
+import ProductDetail from "./features/Products/components/ProductDetail/ProductDetail";
+import { Provider } from "react-redux";
+import store from "./store/store";
+import ChangePassword from "./features/ChangePassword/ChangePassword";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className="App">
+			<Provider store={store}>
+				<Router>
+					<Header />
+
+					<Switch>
+						<PublicRoute exact path="/" component={Home} />
+						<PublicRoute path="/cart" component={Cart} />
+						<PublicRoute path="/forgot_password" component={ForgotPassword} />
+						<PublicRoute path="/payment" component={Payment} />
+						<PublicRoute path="/register" component={Register} />
+						<PublicRoute exact path="/shop" component={Products} />
+						<PublicRoute path="/shop?category=" component={Products} />
+						<PublicRoute path="/shop/product/:id" component={ProductDetail} />
+
+						<PublicRoute restricted path="/login" component={Login} />
+
+						<PrivateRoute path="/order" component={Order} />
+						<PrivateRoute path="/profile" component={Profile} />
+						<PrivateRoute path="/change_password" component={ChangePassword} />
+					</Switch>
+
+					<Footer />
+				</Router>
+			</Provider>
+		</div>
+	);
 }
 
 export default App;

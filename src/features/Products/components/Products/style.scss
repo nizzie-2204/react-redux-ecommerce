@@ -1,0 +1,25 @@
+@import "../../../../scss/variables";
+@import "../../../../scss/reset";
+@import "../../../../scss/mixins";
+
+.products {
+	padding: 5rem 0;
+
+	&__container {
+		@include container(column);
+	}
+
+	&__select {
+		width: 20%;
+		align-self: flex-end;
+		font-size: 1.6rem;
+		margin-bottom: 5rem;
+		margin-left: 1.5rem;
+	}
+
+	&__content {
+		display: flex;
+		align-items: stretch;
+		flex-wrap: wrap;
+	}
+}

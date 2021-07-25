@@ -1,0 +1,167 @@
+@import "../../scss/mixins";
+@import "../../scss/reset";
+@import "../../scss/variables";
+
+.alert__title {
+	font-size: 2rem !important;
+}
+
+.alert__html {
+	font-size: 1.5rem !important;
+}
+
+.payment {
+	padding: 5rem 0;
+
+	&__container {
+		@include container;
+		background-color: $white-1;
+		flex-direction: column;
+		align-items: flex-start;
+		width: 70%;
+		padding: 2rem;
+	}
+
+	&__empty {
+		text-align: center;
+		font-size: 4rem;
+		font-weight: 500;
+	}
+
+	&__title {
+		width: 100%;
+		text-align: center;
+		padding-bottom: 2rem;
+		margin-bottom: 5rem;
+		font-size: 3rem;
+		font-weight: 500;
+		border-bottom: 1px solid $gray-1;
+	}
+
+	&__info {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__address {
+		width: 100%;
+		display: flex;
+		margin-bottom: 2rem;
+
+		&-title {
+			flex: 0.4;
+
+			h5 {
+				font-size: 2rem;
+			}
+		}
+
+		&-desc {
+			flex: 0.6;
+			display: flex;
+			flex-direction: column;
+
+			p {
+				font-size: 1.4rem;
+				margin-bottom: 1rem;
+			}
+		}
+	}
+
+	&__items {
+		display: flex;
+		margin-bottom: 2rem;
+
+		&-title {
+			flex: 0.4;
+
+			h5 {
+				font-size: 2rem;
+			}
+		}
+
+		&-container {
+			flex: 0.6;
+			display: flex;
+			flex-direction: column;
+		}
+
+		&-item {
+			display: flex;
+			margin-bottom: 2rem;
+
+			img {
+				display: block;
+				width: 10rem;
+				height: 15rem;
+				margin-right: 3rem;
+			}
+
+			div {
+				display: flex;
+				flex-direction: column;
+
+				h5 {
+					font-size: 1.4rem;
+					margin-bottom: 1rem;
+				}
+
+				p {
+					font-size: 1.4rem;
+				}
+			}
+		}
+	}
+
+	&__method {
+		display: flex;
+		align-items: stretch;
+		width: 100%;
+
+		&-title {
+			flex: 0.4;
+
+			h5 {
+				font-size: 2rem;
+			}
+		}
+
+		&-form {
+			flex: 0.6;
+			display: flex;
+			flex-direction: column;
+
+			h5 {
+				font-size: 1.6rem;
+				margin-bottom: 2rem;
+			}
+		}
+
+		&-buy {
+			padding: 3rem;
+			display: flex;
+			flex-direction: column;
+			border: 1px solid $gray-1;
+
+			h5 {
+				font-size: 1.6rem;
+				margin-bottom: 2rem;
+			}
+
+			button {
+				background-color: $black-1;
+				border: 1px solid $black-1;
+				color: $yellow-1;
+				outline: none;
+				text-transform: uppercase;
+				padding: 1rem 2rem;
+				cursor: pointer;
+
+				&:hover {
+					color: $white-1;
+				}
+			}
+		}
+	}
+}

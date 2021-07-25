@@ -1,0 +1,109 @@
+@import "../../scss/mixins";
+@import "../../scss/reset";
+@import "../../scss/variables";
+
+.alert__title {
+	font-size: 2rem !important;
+}
+
+.alert__html {
+	font-size: 1.5rem !important;
+}
+
+.change-password {
+	padding: 10rem 0;
+
+	&__container {
+		@include container;
+		align-items: stretch;
+		justify-content: space-between;
+	}
+
+	&__wrap {
+		display: flex;
+		align-items: stretch;
+		justify-content: space-between;
+	}
+
+	&__main {
+		flex: 0.78;
+
+		padding: 2rem;
+
+		display: flex;
+		flex-direction: column;
+		background-color: $gray-4;
+	}
+
+	&__content {
+		align-self: center;
+		width: 70%;
+	}
+
+	&__title {
+		padding-bottom: 3rem;
+		margin-bottom: 3rem;
+		border-bottom: 1px solid $gray-1;
+
+		display: flex;
+		flex-direction: column;
+
+		h3 {
+			font-size: 1.8rem;
+			margin-bottom: 0.5rem;
+		}
+
+		span {
+			font-size: 1.4rem;
+		}
+	}
+
+	&__input {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		margin-bottom: 2.5rem;
+	}
+
+	&__input-group {
+		display: flex;
+		align-items: center;
+
+		label {
+			font-size: 1.4rem;
+			flex: 0.3;
+		}
+
+		input {
+			flex: 0.6;
+			font-size: 1.4rem;
+			padding: 1.5rem;
+			border: 2px solid $gray-1;
+			outline: none;
+		}
+	}
+
+	&__error-message {
+		font-size: 1.4rem;
+		color: $red-1;
+		margin-top: 1rem;
+		margin-left: 17.4rem;
+	}
+
+	&__error-field {
+		border: 1px solid $red-1 !important;
+	}
+
+	&__confirm {
+		width: 14rem;
+		margin-left: 17.5rem;
+		font-size: 1.2rem;
+		padding: 2rem 0;
+		text-transform: uppercase;
+		background-color: $black-1;
+		border: 2px solid $black-1;
+		color: $white-1;
+		cursor: pointer;
+		font-weight: 600;
+	}
+}
