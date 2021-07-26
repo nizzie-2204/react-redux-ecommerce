@@ -30,11 +30,11 @@ function App() {
 						<PublicRoute path="/cart" component={Cart} />
 						<PublicRoute path="/forgot_password" component={ForgotPassword} />
 						<PublicRoute path="/payment" component={Payment} />
-						<PublicRoute path="/register" component={Register} />
 						<PublicRoute exact path="/shop" component={Products} />
 						<PublicRoute path="/shop?category=" component={Products} />
 						<PublicRoute path="/shop/product/:id" component={ProductDetail} />
 
+						<PublicRoute restricted path="/register" component={Register} />
 						<PublicRoute restricted path="/login" component={Login} />
 
 						<PrivateRoute path="/order" component={Order} />
